@@ -1,0 +1,35 @@
+class bank:
+    def __init__(self,amt):
+        self.amt=amt
+    def deposite(self,depo):
+        self.amt=self.amt+depo
+        print(f"{depo} creadited in your account total balance is {self.amt}")
+    def withdraw(self,wid):
+        self.amt-=wid
+        print(f"{wid} debited from your account total balance is {self.amt}")
+    def balance(self):
+        print(f"total available balance is {self.amt} press 1 for deposite and 2 for withdraw")
+
+acn=int(input("enter account number:"))
+password=input("enter password:")
+c=str(acn)+password
+data={"12pra":500,"11vai":300,"13sne":200}
+key=[]
+for x in data.keys():
+    key.append(x)
+if c in key:
+    obj=bank(data[c])
+    obj.balance()
+    a=int(input("Enter:"))
+    if a==1:
+        ba=int(input("enter amount for deposite:"))
+        obj.deposite(ba)
+    if a==2:
+        ba=int(input("enter amount for withdraw:"))
+        if ba>data[c]:
+            print(" not enough balance available for withdraw")
+        else:
+            obj.withdraw(ba)         
+else:
+    print("your account is not created or enter right account num or password")
+    
